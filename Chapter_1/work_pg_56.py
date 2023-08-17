@@ -30,6 +30,11 @@ class NoFly(FlyBehaviour):
     '''implementation of flying with wings'''
     print('I cannot fly!')
 
+class FlyWithRocketPower(FlyBehaviour):
+  '''Rocket-powered implementation of FlyBehaviour'''
+
+  def fly():
+    print('Flying at super-speed... using Rocket power')
 
 #supertype 2
 class QuackBehaviour():
