@@ -77,4 +77,12 @@ this is a behaviour that we had already predicted (not exactly, but to some exte
 We already have this "FlyBehaviour" supertype/interface
 '''
 
-
+'''
+2 Can you think of a class that might want to use the Quack behavior that isn’t a
+duck?
+'''
+'''
+Honestly, looks like very random. By having all the implementation have we not made the
+QuackBehaviour, very duck specific or if we are being very generous, it looks like very
+much attached to a bird. i mean an Elephant cannot use QuackBehaviour!
+'''
