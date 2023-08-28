@@ -140,4 +140,47 @@ class MallardDuck(Duck):
 
 
 # problem: Should we should **NOT** code to implementation, something that we actually ended up doing in the constructor!
-# instantiating Quack class object in the constructor
+# instantiating Quack class object in the constructorA
+
+### difficult to have interface type in python ###
+
+
+'''
+Take a moment and think about how you would implement a duck so that its
+behavior could change at runtime.
+'''
+''' does that mean: if a duck was initialized with quacking could be changed to squeaking?'''
+class DynamicDuck(Duck):
+  
+  def set_quacking(quack_type):
+    ''' a method to assign various behaviuor at run time to a duck''' 
+    if quack_type == 'quack':
+      quackBehaviour = new Quack();
+    elif quack_type == 'squeak':
+      quackBehaviour = new Squeak();
+    elif quack_type == 'mute':
+      quackBehaviour = new Mute();
+
+  # or may in java
+  # argument is interface type
+  '''
+  public void setQuacking(QuackBehaviour quackBehavoiur) {
+    this.quackBehavour = new quackBehaviour;
+  }
+  '''
+
+
+
+'''if this means that how to dynamically set the quacking behaviour at the time of creation of duck obj'''
+class NewDuck(Duck):
+  
+  def __init__(self, quack_type):
+    '''constructor'''
+    if quack_type == 'squeak':
+      #quackBehaviour = new Squeak(); //(quackBehaviour is a reference variable of 'interface type')
+      quack_behaviour = Squeak()
+    else:
+      # quackBehaviour = new Quack();
+      quack_behaviour = Quack()
+  # above can also be written in java
+    
