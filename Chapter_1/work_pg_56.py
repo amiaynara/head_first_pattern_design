@@ -95,8 +95,9 @@ class Duck():
   '''A parent duck class'''
 
   # behaviours (those which are likely to change)
-  quack_behaviour = Quack()
-  fly_behaviour = FlyWithWings()
+  def __init__(self):
+    quack_behaviour = Quack()  # out of all the quacking behaviours [Quack, Squeak, Mute], we *chose* Quack
+    fly_behaviour = FlyWithWings()  # out of all the available fly behaviour we *chose* FlyWithWings
   
   # the behaviour that will change, we **delegate** that task of implementation
   # to corresponding behavour class's method
@@ -125,8 +126,9 @@ class Duck():
 class MallardDuck(Duck):
   '''Mallard duck inherits from the general Duck'''
 
-  quack_behaviour = Quack()  # out of all the quacking behaviours [Quack, Squeak, Mute], we *chose* Quack
-  fly_behaviour = FlyWithWings()  # out of all the available fly behaviour we *chose* FlyWithWings
+  def __init__(self):
+    quack_behaviour = Quack()  # out of all the quacking behaviours [Quack, Squeak, Mute], we *chose* Quack
+    fly_behaviour = FlyWithWings()  # out of all the available fly behaviour we *chose* FlyWithWings
 
   def perform_fly():
     '''method responsible to make the duck fly'''
@@ -136,4 +138,4 @@ class MallardDuck(Duck):
     '''method responsible to make the duck fly'''
     quack_behaviour().quack() # what happens on perform_quack will depend on the self.quack_behaviour's implementation of quacking
 
-
+# problem: Should we not always code to 
