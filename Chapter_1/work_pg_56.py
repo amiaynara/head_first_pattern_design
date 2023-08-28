@@ -96,8 +96,10 @@ class Duck():
 
   # behaviours (those which are likely to change)
   def __init__(self):
-    quack_behaviour = Quack()  # out of all the quacking behaviours [Quack, Squeak, Mute], we *chose* Quack
-    fly_behaviour = FlyWithWings()  # out of all the available fly behaviour we *chose* FlyWithWings
+    # in java it would have been something like this:
+    # QuackBehaviour quackBehaviour (interface variable)
+    quack_behaviour = QuackBehaviour()  # interface variable
+    fly_behaviour = FlyBehaviour()
   
   # the behaviour that will change, we **delegate** that task of implementation
   # to corresponding behavour class's method
@@ -127,15 +129,15 @@ class MallardDuck(Duck):
   '''Mallard duck inherits from the general Duck'''
 
   def __init__(self):
+    # this is the quack_behaviour that was declared in the Duck class (with python it is not very clear)
+    # quackBehaviour = new Quack() # in java (Quack behaviour will be assigned to behaviour reference variable that was declared in Duck constructor
     quack_behaviour = Quack()  # out of all the quacking behaviours [Quack, Squeak, Mute], we *chose* Quack
     fly_behaviour = FlyWithWings()  # out of all the available fly behaviour we *chose* FlyWithWings
 
-  def perform_fly():
-    '''method responsible to make the duck fly'''
-    fly_behaviour().fly()
+  def display():
+    '''method to implement display'''
+    print('method to swim')
 
-  def perform_quack():
-    '''method responsible to make the duck fly'''
-    quack_behaviour().quack() # what happens on perform_quack will depend on the self.quack_behaviour's implementation of quacking
 
-# problem: Should we not always code to 
+# problem: Should we should **NOT** code to implementation, something that we actually ended up doing in the constructor!
+# instantiating Quack class object in the constructor
