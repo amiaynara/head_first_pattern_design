@@ -86,3 +86,54 @@ Honestly, looks like very random. By having all the implementation have we not m
 QuackBehaviour, very duck specific or if we are being very generous, it looks like very
 much attached to a bird. i mean an Elephant cannot use QuackBehaviour!
 '''
+
+# so far how does our implementation look
+
+# we  have a Duck class
+
+class Duck():
+  '''A parent duck class'''
+
+  # behaviours (those which are likely to change)
+  quack_behaviour = Quack()
+  fly_behaviour = FlyWithWings()
+  
+  # the behaviour that will change, we **delegate** that task of implementation
+  # to corresponding behavour class's method
+  # and since interfaces are contracts that must be implemented, it becomes **compulsory**
+  # for that behaviour class to implement the behaviour
+  def perform_fly():
+    '''method responsible to make the duck fly'''
+    fly_behaviour().fly()
+
+  def perform_quack():
+    '''method responsible to make the duck fly'''
+    quack_behaviour().quack() # what happens on perform_quack will depend on the self.quack_behaviour's implementation of quacking
+
+
+  # methods/behaviours which are less likely to vary across Duck types
+  def swim():
+    ''' method that is responsible to maket ducks swim'''
+    print('implementation of swim behaviour')
+
+  def display():
+    ''' method that is responsible to pressent ducks'''
+    print('implementation of appearance of duck')
+
+
+# so let us say if the team comes up with a new type of Duck -> MallardDuck
+class MallardDuck(Duck):
+  '''Mallard duck inherits from the general Duck'''
+
+  quack_behaviour = Quack()  # out of all the quacking behaviours [Quack, Squeak, Mute], we *chose* Quack
+  fly_behaviour = FlyWithWings()  # out of all the available fly behaviour we *chose* FlyWithWings
+
+  def perform_fly():
+    '''method responsible to make the duck fly'''
+    fly_behaviour().fly()
+
+  def perform_quack():
+    '''method responsible to make the duck fly'''
+    quack_behaviour().quack() # what happens on perform_quack will depend on the self.quack_behaviour's implementation of quacking
+
+
