@@ -98,8 +98,8 @@ class Duck():
   def __init__(self):
     # in java it would have been something like this:
     # QuackBehaviour quackBehaviour (interface variable)
-    quack_behaviour = QuackBehaviour()  # interface variable
-    fly_behaviour = FlyBehaviour()
+    self.quack_behaviour = QuackBehaviour()  # interface variable
+    self.fly_behaviour = FlyBehaviour()
   
   # the behaviour that will change, we **delegate** that task of implementation
   # to corresponding behavour class's method
@@ -107,11 +107,11 @@ class Duck():
   # for that behaviour class to implement the behaviour
   def perform_fly():
     '''method responsible to make the duck fly'''
-    fly_behaviour().fly()
+    self.fly_behaviour().fly()
 
   def perform_quack():
     '''method responsible to make the duck fly'''
-    quack_behaviour().quack() # what happens on perform_quack will depend on the self.quack_behaviour's implementation of quacking
+    self.quack_behaviour().quack() # what happens on perform_quack will depend on the self.quack_behaviour's implementation of quacking
 
 
   # methods/behaviours which are less likely to vary across Duck types
@@ -131,8 +131,8 @@ class MallardDuck(Duck):
   def __init__(self):
     # this is the quack_behaviour that was declared in the Duck class (with python it is not very clear)
     # quackBehaviour = new Quack() # in java (Quack behaviour will be assigned to behaviour reference variable that was declared in Duck constructor
-    quack_behaviour = Quack()  # out of all the quacking behaviours [Quack, Squeak, Mute], we *chose* Quack
-    fly_behaviour = FlyWithWings()  # out of all the available fly behaviour we *chose* FlyWithWings
+    self.quack_behaviour = Quack()  # out of all the quacking behaviours [Quack, Squeak, Mute], we *chose* Quack
+    self.fly_behaviour = FlyWithWings()  # out of all the available fly behaviour we *chose* FlyWithWings
 
   def display():
     '''method to implement display'''
@@ -152,15 +152,22 @@ behavior could change at runtime.
 ''' does that mean: if a duck was initialized with quacking could be changed to squeaking?'''
 class DynamicDuck(Duck):
   
+  '''
   def set_quacking(quack_type):
-    ''' a method to assign various behaviuor at run time to a duck''' 
+    ' a method to assign various behaviuor at run time to a duck'
     if quack_type == 'quack':
-      quackBehaviour = new Quack();
+      self.quack_behaviour = new Quack();
     elif quack_type == 'squeak':
-      quackBehaviour = new Squeak();
+      self.quack_behaviour = new Squeak();
     elif quack_type == 'mute':
-      quackBehaviour = new Mute();
+      self.quack_behaviour = new Mute();
+  '''
 
+  # for python also we could do something like: 
+  def set_quacking(quacking_behaviour_interface_obj):
+    self.quacking_behaviour = quacking_behaviour_interface_obj
+
+      
   # or may in java
   # argument is interface type
   '''
@@ -178,9 +185,29 @@ class NewDuck(Duck):
     '''constructor'''
     if quack_type == 'squeak':
       #quackBehaviour = new Squeak(); //(quackBehaviour is a reference variable of 'interface type')
-      quack_behaviour = Squeak()
+      self.quack_behaviour = Squeak()
     else:
       # quackBehaviour = new Quack();
-      quack_behaviour = Quack()
+      self.quack_behaviour = Quack()
   # above can also be written in java
+   
+
+
+####### Testing #######
+
+class DuckSimulator():
+  '''class to simulate the existing ducks'''
+
+  def main():
+    mallard_duck = MallardDuck()
+    mallard_duck.perform_fly()
+    mallard_duck.perform_quack()
     
+    ## dynamic ducI
+    model_duck = DynamicDuck()
+    model_duck.perform_quack()  # would just quack
+    model_duck.set_quacking(Squeak())
+    model_duck.perform_quack()  # would not start 'squeaking' instead
+
+
+
