@@ -1,4 +1,4 @@
-package duck.QuackBehaviour;
+// package duck.QuackBehaviour;
 
 // import QuackBehaviour interface
 // import duck.QuackBehaviour;

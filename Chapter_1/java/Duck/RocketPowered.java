@@ -1,4 +1,4 @@
-package duck.FlyBehaviour;
+// package duck.FlyBehaviour;
 
 // import the interface
 // import duck.FlyBehaviour;

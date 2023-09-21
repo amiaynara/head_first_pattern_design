@@ -1,4 +1,4 @@
-package duck.QuackBehaviour;
+// package duck.QuackBehaviour;
 
 public interface QuackBehaviour {
   public void quack();

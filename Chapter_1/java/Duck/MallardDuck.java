@@ -1,11 +1,11 @@
-package duck.MallardDuck;
+// package duck.MallardDuck;
 
 // import duck class
 // import duck.FlyBehaviour.*;
 // import duck.QuackBehaviour.*;
-import duck.*;
-import duck.QuackBehaviour.Quack;
-import duck.FlyBehaviour.FlyWithWings;
+// import duck.*;
+// import duck.QuackBehaviour.Quack;
+// import duck.FlyBehaviour.FlyWithWings;
 
 public class MallardDuck extends Duck {
 
